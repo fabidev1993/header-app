@@ -1,24 +1,15 @@
-import logo from './logo.svg';
+import React from 'react'; // Must be imported for webpack to work
 import './App.css';
+const Reza = React.lazy(()=> import('HomeApp/Reza'))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="HeaderApp">
+        <div>Header</div>
+          <React.Suspense fallback={<div>Loading Reza...</div>}>
+              <Reza />
+          </React.Suspense>
+      </div>
   );
 }
 
